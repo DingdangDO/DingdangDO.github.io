@@ -4,7 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中国传统文化网站</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #C41E3A;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 1rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3 ease;
+        }
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+        .hero {
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+        }
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            object-fit: cover;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .featured-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .feature {
+            flex: 1;
+            margin: 0 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .feature-content {
+            padding: 1rem;
+        }
+        .feature h2 {
+            margin-bottom: 0.5rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #C41E3A;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #A51C30;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #C41E3A;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+        #back-to-top:hover {
+            background-color: #A51C30;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .featured-content {
+                flex-direction: column;
+            }
+            .feature {
+                margin: 1rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -31,40 +194,79 @@
             <div class="slideshow">
                 <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=800&q=80" alt="长城" class="slide">
                 <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=800&q=80" alt="兵马俑" class="slide">
-                <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=800&q=80" alt="故宫" class="slide">
+                <img src="https://lonelyplanetimages.imgix.net/mastheads/1262645.jpg" alt="故宫" class="slide">
             </div>
-            <h1>探索中国传统文化</h1>
-            <p>欢迎来到我们的中国传统文化网站。在这里，您可以深入了解中国丰富的文化遗产。</p>
+            <div class="hero-content">
+                <h1>探索中国传统文化</h1>
+                <p>欢迎来到我们的中国传统文化网站。在这里，您可以深入了解中国丰富的文化遗产。</p>
+            </div>
         </section>
 
         <section class="featured-content">
             <div class="feature">
-                <h2>中国艺术</h2>
-                <img src="https://images.unsplash.com/photo-1578996834254-13d1b661a5ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="中国画" class="feature-image">
-                <p>探索中国传统绘画、书法和工艺品</p>
-                <a href="art.html" class="btn">了解更多</a>
+                <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C._h1ObG5XyOjcQnWEPuhjQgHaHf?rs=1&pid=ImgDetMain" alt="中国画" class="feature-image">
+                <div class="feature-content">
+                    <h2>中国艺术</h2>
+                    <p>探索中国传统绘画、书法和工艺品</p>
+                    <a href="art.html" class="btn">了解更多</a>
+                </div>
             </div>
             <div class="feature">
-                <h2>传统节日</h2>
-                <img src="https://images.unsplash.com/photo-1582436416930-f533b50a7cd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="春节" class="feature-image">
-                <p>了解中国重要节日的历史和习俗</p>
-                <a href="festivals.html" class="btn">了解更多</a>
+                <img src="https://ts1.cn.mm.bing.net/th/id/R-C.f887ab5e0cd41d26c34fa502180ea135?rik=tiTAv%2bj3N788jw&riu=http%3a%2f%2fimg95.699pic.com%2fphoto%2f50043%2f3240.jpg_wh860.jpg&ehk=TgaaXSqZXD4bRtUMp6IBBg6fFYj1o7GJZIxWgN2ifxw%3d&risl=&pid=ImgRaw&r=0" alt="春节" class="feature-image">
+                <div class="feature-content">
+                    <h2>传统节日</h2>
+                    <p>了解中国重要节日的历史和习俗</p>
+                    <a href="festivals.html" class="btn">了解更多</a>
+                </div>
             </div>
             <div class="feature">
-                <h2>中国美食</h2>
                 <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="中国美食" class="feature-image">
-                <p>品味各地特色菜肴和烹饪技巧</p>
-                <a href="cuisine.html" class="btn">了解更多</a>
+                <div class="feature-content">
+                    <h2>中国美食</h2>
+                    <p>品味各地特色菜肴和烹饪技巧</p>
+                    <a href="cuisine.html" class="btn">了解更多</a>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 中国传统文化网站. 保留所有权利。</p>
+        <p>&copy; 2024 中国传统文化网站. SamZheng保留所有权利。</p>
     </footer>
 
     <button id="back-to-top" title="返回顶部">↑</button>
 
-    <script src="script.js"></script>
+    <script>
+        // 幻灯片效果
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlides() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
+            setTimeout(showSlides, 5000); // 每5秒切换一次
+        }
+
+        showSlides();
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
