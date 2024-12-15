@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国传统文化网站</title>
+    <title>中国传统文化探索之旅</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,9 +12,10 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Noto Serif SC', serif;
             line-height: 1.6;
             color: #333;
+            background-color: #f4f4f4;
         }
         header {
             background-color: #C41E3A;
@@ -22,6 +24,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         nav {
             display: flex;
@@ -34,6 +37,12 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
         }
         nav ul {
             display: flex;
@@ -45,78 +54,126 @@
         nav ul li a {
             color: white;
             text-decoration: none;
-            transition: color 0.3 ease;
+            transition: color 0.3s ease;
+            padding: 0.5rem;
         }
         nav ul li a:hover {
             color: #FFD700;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 4px;
         }
         .hero {
-            position: relative;
-            height: 60vh;
-            overflow: hidden;
-        }
-        .slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            object-fit: cover;
-        }
-        .slide.active {
-            opacity: 1;
-        }
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            background-image: url('https://th.bing.com/th/id/R.ea672ef7896a9de54d2542470f754e2c?rik=G8%2b1W0OJCy0rXA&riu=http%3a%2f%2fimg.zyedu.com%2fphoto%2f2021%2f2%2f19%2ffcf49769-14d0-4445-93ce-4095f80a4fcf.jpg&ehk=wVVo8wmiLEOEDQTk%2bw%2byvFvchCIVk6a1D4KsJC95in4%3d&risl=&pid=ImgRaw&r=0');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             color: white;
-            z-index: 1;
+            position: relative;
         }
-        .hero-content h1 {
-            font-size: 2.5rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #C41E3A;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+        }
+        .cta-button:hover {
+            background-color: #A51C30;
+            transform: translateY(-2px);
         }
         .featured-content {
-            display: flex;
-            justify-content: space-between;
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 3rem auto;
             padding: 0 1rem;
         }
-        .feature {
-            flex: 1;
-            margin: 0 1rem;
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #C41E3A;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #C41E3A;
+            margin: 10px auto 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
-        .feature:hover {
+        .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-        .feature-image {
+        .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: transform 0.3s ease;
         }
-        .feature-content {
-            padding: 1rem;
+        .card:hover img {
+            transform: scale(1.05);
         }
-        .feature h2 {
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card h3 {
             margin-bottom: 0.5rem;
+            color: #C41E3A;
+        }
+        .card p {
+            margin-bottom: 1rem;
         }
         .btn {
             display: inline-block;
@@ -125,18 +182,117 @@
             padding: 0.5rem 1rem;
             text-decoration: none;
             border-radius: 4px;
-            margin-top: 1rem;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         .btn:hover {
             background-color: #A51C30;
+            transform: translateY(-2px);
+        }
+        .quote-section {
+            background-color: #f8f8f8;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        .quote-author {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #C41E3A;
+        }
+        .interactive-map {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .timeline {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 2rem;
+            border-left: 2px solid #C41E3A;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .timeline-date {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #C41E3A;
+        }
+        .timeline-content {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         footer {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0;
             margin-top: 2rem;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            margin-bottom: 1rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #FFD700;
         }
         #back-to-top {
             position: fixed;
@@ -151,104 +307,322 @@
             font-size: 24px;
             cursor: pointer;
             display: none;
-            transition: opacity 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         #back-to-top:hover {
             background-color: #A51C30;
+            transform: translateY(-3px);
+        }
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+        .language-switcher select {
+            appearance: none;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        .language-switcher::after {
+            content: '▼';
+            font-size: 0.8rem;
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://d.ifengimg.com/q100/img1.ugc.ifeng.com/newugc/20210112/15/wemedia/e79d8d12d28954678209d881a6feff096002ddff_size171_w856_h544.jpeg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        .culture-quiz {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+        }
+        .quiz-option {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .quiz-option:hover {
+            background-color: #f0f0f0;
+        }
+        .quiz-option.selected {
+            background-color: #C41E3A;
+            color: white;
+        }
+        .quiz-submit {
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #C41E3A;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .quiz-submit:hover {
+            background-color: #A51C30;
+        }
+        .virtual-tour {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .tour-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tour-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
         @media (max-width: 768px) {
             nav ul {
                 display: none;
             }
-            .featured-content {
-                flex-direction: column;
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            .feature {
-                margin: 1rem 0;
+            .hero p {
+                font-size: 1rem;
+            }
+            .language-switcher {
+                margin-top: 1rem;
             }
         }
     </style>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">中国文化</div>
+            <div class="logo">
+                <img src="https://th.bing.com/th/id/OIP.PZdGveupGARoJdg6MdztZQHaE8?rs=1&pid=ImgDetMain" alt="中国国旗">
+                中国文化探索
+            </div>
             <ul>
-                <li><a href="index.html">首页</a></li>
-                <li><a href="art.html">艺术</a></li>
-                <li><a href="festivals.html">节日</a></li>
-                <li><a href="cuisine.html">美食</a></li>
-                <li><a href="philosophy.html">哲学</a></li>
-                <li><a href="medicine.html">中医</a></li>
-                <li><a href="martial-arts.html">武术</a></li>
-                <li><a href="calligraphy.html">书法</a></li>
-                <li><a href="opera.html">戏曲</a></li>
-                <li><a href="tea-culture.html">茶文化</a></li>
-                <li><a href="architecture.html">建筑</a></li>
+                <li><a href="#home" class="translate">首页</a></li>
+                <li><a href="#featured" class="translate">特色内容</a></li>
+                <li><a href="#quote" class="translate">名言</a></li>
+                <li><a href="#map" class="translate">文化地图</a></li>
+                <li><a href="#timeline" class="translate">历史时间线</a></li>
+                <li><a href="#quiz" class="translate">文化问答</a></li>
+                <li><a href="#tour" class="translate">虚拟游览</a></li>
             </ul>
+            <div id="google_translate_element"></div>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="slideshow">
-                <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=800&q=80" alt="长城" class="slide">
-                <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=800&q=80" alt="兵马俑" class="slide">
-                <img src="https://lonelyplanetimages.imgix.net/mastheads/1262645.jpg" alt="故宫" class="slide">
-            </div>
+        <section id="home" class="hero">
             <div class="hero-content">
-                <h1>探索中国传统文化</h1>
-                <p>欢迎来到我们的中国传统文化网站。在这里，您可以深入了解中国丰富的文化遗产。</p>
+                <h1 class="translate">探索中国传统文化之美</h1>
+                <p class="translate">踏上一段穿越千年的文化之旅，感受中华文明的深邃魅力</p>
+                <a href="#featured" class="cta-button translate">开始探索</a>
             </div>
         </section>
 
-        <section class="featured-content">
-            <div class="feature">
-                <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C._h1ObG5XyOjcQnWEPuhjQgHaHf?rs=1&pid=ImgDetMain" alt="中国画" class="feature-image">
-                <div class="feature-content">
-                    <h2>中国艺术</h2>
-                    <p>探索中国传统绘画、书法和工艺品</p>
-                    <a href="art.html" class="btn">了解更多</a>
+        <section id="featured" class="featured-content">
+            <h2 class="section-title translate">特色内容</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C._h1ObG5XyOjcQnWEPuhjQgHaHf?rs=1&pid=ImgDetMain" alt="中国艺术">
+                    <div class="card-content">
+                        <h3 class="translate">中国艺术</h3>
+                        <p class="translate">探索中国传统绘画、书法和工艺品的独特魅力</p>
+                        <a href="http://art.china.cn/index.htm" class="btn translate">了解更多</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://ts1.cn.mm.bing.net/th/id/R-C.f887ab5e0cd41d26c34fa502180ea135?rik=tiTAv%2bj3N788jw&riu=http%3a%2f%2fimg95.699pic.com%2fphoto%2f50043%2f3240.jpg_wh860.jpg&ehk=TgaaXSqZXD4bRtUMp6IBBg6fFYj1o7GJZIxWgN2ifxw%3d&risl=&pid=ImgRaw&r=0" alt="传统节日">
+                    <div class="card-content">
+                        <h3 class="translate">传统节日</h3>
+                        <p class="translate">体验中国重要节日的历史渊源和丰富习俗</p>
+                        <a href="http://www.wenming.cn/wmdjr_299/" class="btn translate">了解更多</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="中国美食">
+                    <div class="card-content">
+                        <h3 class="translate">中国美食</h3>
+                        <p class="translate">品味各地特色菜肴，探索中华饮食文化的精髓</p>
+                        <a href="https://www.meishichina.com/" class="btn translate">了解更多</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1528696892704-5e1122852276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="中国哲学">
+                    <div class="card-content">
+                        <h3 class="translate">中国哲学</h3>
+                        <p class="translate">深入了解中国古代哲学思想的智慧与洞见</p>
+                        <a href="https://ncpssd.org/" class="btn translate">了解更多</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://bpic.588ku.com/back_origin_min_pic/19/10/22/58dfb249e73cfc96733ad926706f6553.jpg">
+                    <div class="card-content">
+                        <h3 class="translate">中医药</h3>
+                        <p class="translate">探索传统中医理论与实践，感受东方智慧</p>
+                        <a href="https://www.zhzyw.com/" class="btn translate">了解更多</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="武术">
+                    <div class="card-content">
+                        <h3 class="translate">武术</h3>
+                        <p class="translate">领略中国传统武术的博大精深与文化内涵</p>
+                        <a href="https://www.wushu.com.cn/#/" class="btn translate">了解更多</a>
+                    </div>
                 </div>
             </div>
-            <div class="feature">
-                <img src="https://ts1.cn.mm.bing.net/th/id/R-C.f887ab5e0cd41d26c34fa502180ea135?rik=tiTAv%2bj3N788jw&riu=http%3a%2f%2fimg95.699pic.com%2fphoto%2f50043%2f3240.jpg_wh860.jpg&ehk=TgaaXSqZXD4bRtUMp6IBBg6fFYj1o7GJZIxWgN2ifxw%3d&risl=&pid=ImgRaw&r=0" alt="春节" class="feature-image">
-                <div class="feature-content">
-                    <h2>传统节日</h2>
-                    <p>了解中国重要节日的历史和习俗</p>
-                    <a href="festivals.html" class="btn">了解更多</a>
+        </section>
+
+        <section id="quote" class="quote-section">
+            <div class="parallax-bg"></div>
+            <div class="quote translate">
+                "学而不思则罔，思而不学则殆。"
+            </div>
+            <div class="quote-author translate">— 孔子</div>
+        </section>
+
+        <section id="map" class="interactive-map">
+            <h2 class="section-title translate">中国文化地图</h2>
+            <div class="map-container">
+                <iframe src="http://stele.geogv.org/zhcn/static/wh_site_cn"></iframe>
+            </div>
+        </section>
+
+        <section id="timeline" class="timeline">
+            <h2 class="section-title translate">中国历史时间线</h2>
+            <div class="timeline-item">
+                <div class="timeline-date translate">公元前2070年-公元前1600年</div>
+                <div class="timeline-content">
+                    <h3 class="translate">夏朝</h3>
+                    <p class="translate">中国第一个王朝，开启了中国文明的新纪元。</p>
                 </div>
             </div>
-            <div class="feature">
-                <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="中国美食" class="feature-image">
-                <div class="feature-content">
-                    <h2>中国美食</h2>
-                    <p>品味各地特色菜肴和烹饪技巧</p>
-                    <a href="cuisine.html" class="btn">了解更多</a>
+            <div class="timeline-item">
+                <div class="timeline-date translate">公元前1600年-公元前1046年</div>
+                <div class="timeline-content">
+                    <h3 class="translate">商朝</h3>
+                    <p class="translate">青铜器文明的鼎盛时期，甲骨文的出现。</p>
                 </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date translate">公元前1046年-公元前256年</div>
+                <div class="timeline-content">
+                    <h3 class="translate">周朝</h3>
+                    <p class="translate">儒家、道家等重要思想流派的形成。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date translate">公元前221年-公元前206年</div>
+                <div class="timeline-content">
+                    <h3 class="translate">秦朝</h3>
+                    <p class="translate">中国第一个统一的封建王朝，修建长城。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date translate">公元前206年-公元220年</div>
+                <div class="timeline-content">
+                    <h3 class="translate">汉朝</h3>
+                    <p class="translate">丝绸之路的开辟，儒学成为官方哲学。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="culture-quiz">
+            <h2 class="section-title translate">中国文化问答</h2>
+            <div class="quiz-question">
+                <h3 class="translate">1. 中国的四大发明不包括以下哪项？</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option translate">A. 造纸术</div>
+                    <div class="quiz-option translate">B. 指南针</div>
+                    <div class="quiz-option translate">C. 火药</div>
+                    <div class="quiz-option translate">D. 瓷器</div>
+                </div>
+            </div>
+            <button class="quiz-submit translate">提交答案</button>
+        </section>
+
+        <section id="tour" class="virtual-tour">
+            <h2 class="section-title translate">虚拟游览：故宫博物院</h2> <div class="map-container">
+           <iframe src="https://www.720yun.com/vr/bc021cO6uu6"></iframe>
+
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 中国传统文化网站. SamZheng保留所有权利。</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="translate">关于我们</h3>
+                <p class="translate">致力于传播和弘扬中国传统文化</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="translate">联系方式</h3>
+                <p class="translate">邮箱：2775548341@qq.com</p>
+                <p class="translate">电话：+86 15079618401</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="translate">关注我们</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-wechat"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="translate">&copy; 2024 中国传统文化探索. SamZheng保留所有权利。</p>
     </footer>
 
     <button id="back-to-top" title="返回顶部">↑</button>
 
     <script>
-        // 幻灯片效果
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function showSlides() {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides[slideIndex].classList.add('active');
-            setTimeout(showSlides, 5000); // 每5秒切换一次
+        // Google Translate initialization
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'zh-CN',
+                includedLanguages: 'en,ja,ko,fr,de,es,ru',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
         }
-
-        showSlides();
 
         // 返回顶部按钮
         const backToTopButton = document.getElementById('back-to-top');
@@ -267,6 +641,128 @@
                 behavior: 'smooth'
             });
         });
+
+        // 添加平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 时间线动画
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
+
+        // 文化问答功能
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const quizSubmit = document.querySelector('.quiz-submit');
+
+        quizOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                quizOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+
+        quizSubmit.addEventListener('click', () => {
+            const selectedOption = document.querySelector('.quiz-option.selected');
+            if (selectedOption) {
+                if (selectedOption.textContent.includes('瓷器')) {
+                    alert('回答正确！中国的四大发明是造纸术、指南针、火药和印刷术。');
+                } else {
+                    alert('回答错误，请再试一次！');
+                }
+            } else {
+                alert('请选择一个答案！');
+            }
+        });
+
+        // 名言轮播
+        const quotes = [
+            { text: "学而不思则罔，思而不学则殆。", author: "孔子" },
+            { text: "千里之行，始于足下。", author: "老子" },
+            { text: "知之为知之，不知为不知，是知也。", author: "孔子" },
+            { text: "不以物喜，不以己悲。", author: "范仲淹" },
+            { text: "天行健，君子以自强不息。", author: "周易" }
+        ];
+
+        const quoteElement = document.querySelector('.quote');
+        const quoteAuthorElement = document.querySelector('.quote-author');
+        let currentQuoteIndex = 0;
+
+        function changeQuote() {
+            const { text, author } = quotes[currentQuoteIndex];
+            quoteElement.textContent = text;
+            quoteAuthorElement.textContent = `— ${author}`;
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        }
+
+        setInterval(changeQuote, 10000); // Change quote every 10 seconds
+
+        // Parallax effect for quote background
+        window.addEventListener('scroll', () => {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const scrollPosition = window.pageYOffset;
+            parallaxBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        });
+
+        // Add hover effect to featured content cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Virtual tour interaction
+        const tourContainer = document.querySelector('.tour-container');
+        tourContainer.addEventListener('click', () => {
+            if (tourContainer.requestFullscreen) {
+                tourContainer.requestFullscreen();
+            } else if (tourContainer.mozRequestFullScreen) { // Firefox
+                tourContainer.mozRequestFullScreen();
+            } else if (tourContainer.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                tourContainer.webkitRequestFullscreen();
+            } else if (tourContainer.msRequestFullscreen) { // IE/Edge
+                tourContainer.msRequestFullscreen();
+            }
+        });
+
+        // Translate functionality
+        const translateElements = document.querySelectorAll('.translate');
+        translateElements.forEach(element => {
+            const originalText = element.textContent;
+            element.dataset.originalText = originalText;
+        });
+
+        function updateTranslation() {
+            const currentLang = document.querySelector('.goog-te-combo').value;
+            if (currentLang === '') {
+                translateElements.forEach(element => {
+                    element.textContent = element.dataset.originalText;
+                });
+            }
+        }
+
+        // Check for translation changes
+        setInterval(updateTranslation, 1000);
     </script>
 </body>
 </html>
+
