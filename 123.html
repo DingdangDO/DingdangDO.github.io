@@ -1,178 +1,103 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SamZheng的个人网站</title>
+    <title>江西省天气数据</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 0 20px;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #0099ff 3px solid;
-        }
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        header ul {
-            padding: 0;
-            list-style: none;
-        }
-        header li {
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-        header #branding {
-            float: left;
-        }
-        header #branding h1 {
-            margin: 0;
-        }
-        header nav {
-            float: right;
-            margin-top: 10px;
-        }
-        header .highlight, header .current a {
-            color: #0099ff;
-            font-weight: bold;
-        }
-        header a:hover {
-            color: #ffffff;
-            font-weight: bold;
-        }
-        #showcase {
-            min-height: 400px;
-            background: url('https://source.unsplash.com/random/1600x900') no-repeat center center/cover;
-            text-align: center;
-            color: #fff;
-        }
-        #showcase h1 {
-            margin-top: 100px;
-            font-size: 55px;
-            margin-bottom: 10px;
-        }
-        #showcase p {
-            font-size: 20px;
-        }
-        .card {
-            background: #fff;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 30px;
-            background: #0099ff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            transition: background 0.3s ease;
-        }
-        .btn:hover {
-            background: #007acc;
-        }
-        footer {
-            padding: 20px;
-            margin-top: 20px;
-            color: #ffffff;
-            background-color: #0099ff;
-            text-align: center;
-        }
+        body{font-family:微软雅黑; background: #f0f8ff; padding:20px;}
+        .weather{border:1px solid #999; padding:10px; margin:10px; width:300px; background:white; border-radius:8px;}
+        .city{font-size:20px; font-weight:bold; color:#0066cc;}
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div id="branding">
-                <h1><span class="highlight">SamZheng</span> 个人网站</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li class="current"><a href="#showcase">首页</a></li>
-                    <li><a href="#about">关于我</a></li>
-                    <li><a href="#skills">技能</a></li>
-                    <li><a href="#projects">项目</a></li>
-                    <li><a href="#contact">联系我</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <h1>江西省11市实时天气</h1>
 
-    <section id="showcase">
-        <div class="container">
-            <h1>欢迎来到我的个人网站</h1>
-            <p>我是一名充满激情的开发者，致力于创造令人惊叹的数字体验</p>
-            <a href="#about" class="btn">了解更多</a>
-        </div>
-    </section>
-
-    <div class="container">
-        <section id="about" class="card">
-            <h2>关于我</h2>
-            <p>我是一名全栈开发者，热爱编程和解决问题。我喜欢学习新技术，并将它们应用到实际项目中。在空闲时间，我喜欢阅读技术博客和参与开源项目。</p>
-        </section>
-
-        <section id="skills" class="card">
-            <h2>技能</h2>
-            <ul>
-                <li>HTML5 & CSS3</li>
-                <li>JavaScript (ES6+)</li>
-                <li>React.js</li>
-                <li>Node.js</li>
-                <li>Python</li>
-                <li>SQL & NoSQL 数据库</li>
-            </ul>
-        </section>
-
-        <section id="projects" class="card">
-            <h2>项目展示</h2>
-            <div class="project">
-                <h3>项目 1</h3>
-                <p>这是一个使用React.js和Node.js构建的全栈Web应用。它实现了......</p>
-            </div>
-            <div class="project">
-                <h3>项目 2</h3>
-                <p>这是一个Python脚本，用于自动化......</p>
-            </div>
-        </section>
-
-        <section id="contact" class="card">
-            <h2>联系我</h2>
-            <p>Email: 2775548341@qq.com</p>
-            <p>GitHub:DingdangDO.github.com</p>
-                    </section>
+    <div class="weather">
+        <div class="city">南昌</div>
+        <div class="temp">26℃</div>
+        <div class="wea">多云</div>
+        <div class="wind">东北风 2级</div>
+        <div class="hum">湿度 72%</div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 SamZheng的个人网站. All rights reserved.</p>
-    </footer>
+    <div class="weather">
+        <div class="city">景德镇</div>
+        <div class="temp">25℃</div>
+        <div class="wea">晴</div>
+        <div class="wind">东风 1级</div>
+        <div class="hum">湿度 68%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">萍乡</div>
+        <div class="temp">27℃</div>
+        <div class="wea">阴</div>
+        <div class="wind">南风 3级</div>
+        <div class="hum">湿度 75%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">九江</div>
+        <div class="temp">24℃</div>
+        <div class="wea">小雨</div>
+        <div class="wind">西北风 2级</div>
+        <div class="hum">湿度 80%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">新余</div>
+        <div class="temp">26℃</div>
+        <div class="wea">多云</div>
+        <div class="wind">东北风 1级</div>
+        <div class="hum">湿度 70%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">鹰潭</div>
+        <div class="temp">25℃</div>
+        <div class="wea">晴</div>
+        <div class="wind">东风 2级</div>
+        <div class="hum">湿度 65%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">赣州</div>
+        <div class="temp">28℃</div>
+        <div class="wea">多云</div>
+        <div class="wind">南风 3级</div>
+        <div class="hum">湿度 73%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">吉安</div>
+        <div class="temp">27℃</div>
+        <div class="wea">阴</div>
+        <div class="wind">西南风 2级</div>
+        <div class="hum">湿度 78%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">宜春</div>
+        <div class="temp">26℃</div>
+        <div class="wea">晴</div>
+        <div class="wind">东北风 1级</div>
+        <div class="hum">湿度 69%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">抚州</div>
+        <div class="temp">25℃</div>
+        <div class="wea">多云</div>
+        <div class="wind">东风 2级</div>
+        <div class="hum">湿度 71%</div>
+    </div>
+
+    <div class="weather">
+        <div class="city">上饶</div>
+        <div class="temp">24℃</div>
+        <div class="wea">小雨</div>
+        <div class="wind">西北风 3级</div>
+        <div class="hum">湿度 82%</div>
+    </div>
 </body>
 </html>
